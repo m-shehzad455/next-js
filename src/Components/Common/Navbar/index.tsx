@@ -5,7 +5,7 @@ import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
 import {TbSettings} from "react-icons/tb"
 import {MdNotificationsNone} from "react-icons/md"
 import {FiMessageSquare,FiPackage} from "react-icons/fi"
-import { US } from 'country-flag-icons/react/3x2'
+import { US,NZ, AQ,AT,PK,IN,CH,IR,SR,EG } from 'country-flag-icons/react/3x2'
 import Image from 'next/image'
 import  {useState}  from 'react'
 import {Dialog} from '@headlessui/react'
@@ -100,18 +100,22 @@ function classNames(...classes:any) {
               </div> */}
               <div className="hidden lg:ml-4 lg:flex lg:items-center">
                 
-
+                
                 {/* Profile dropdown */}
                 
                 <Menu as="div" className="relative ml-4 flex-shrink-0">
                   <div>
+                    
                     <Menu.Button className="flex rounded-full bg-white text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
                       <span className="sr-only">Open user menu</span>
-                      <US className="h-6 w-6"/>
+                      <NZ className="h-6 w-6"/>
 
                     </Menu.Button>
+                    
                   </div>
+                  
                   <Transition
+                  
                     as={Fragment}
                     enter="transition ease-out duration-100"
                     enterFrom="transform opacity-0 scale-95"
@@ -119,19 +123,30 @@ function classNames(...classes:any) {
                     leave="transition ease-in duration-75"
                     leaveFrom="transform opacity-100 scale-100"
                     leaveTo="transform opacity-0 scale-95"
+                    
                   >
-                    <Menu.Items className="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
+                   
+                    <Menu.Items className="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none flex justify-between">
+              
                       <Menu.Item>
+                        
                         {({ active }) => (
-                          <a
+                          <a 
                             href="#"
-                            className={classNames(active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700')}
+                            className={classNames(active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700 ')}
                           >
-                            Your Profile
+                            <NZ className='h-6 w-6 '/> 
+                            <NZ className='h-6 w-6 '/>
+                            <NZ className='h-6 w-6 '/>
+                            <NZ className='h-6 w-6 '/>
+                            <NZ className='h-6 w-6 '/>
+                           
                           </a>
                         )}
+                        
                       </Menu.Item>
-                      <Menu.Item>
+                      
+                      {/* <Menu.Item>
                         {({ active }) => (
                           <a
                             href="#"
@@ -140,14 +155,18 @@ function classNames(...classes:any) {
                             Settings
                           </a>
                         )}
-                      </Menu.Item>
+                      </Menu.Item> */}
                       <Menu.Item>
                         {({ active }) => (
                           <a
                             href="#"
                             className={classNames(active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700')}
                           >
-                            Sign out
+                            <NZ className='h-6 w-6 '/> 
+                            <NZ className='h-6 w-6 '/>
+                            <NZ className='h-6 w-6 '/>
+                            <NZ className='h-6 w-6 '/>
+                            <NZ className='h-6 w-6 '/>
                           </a>
                         )}
                       </Menu.Item>
