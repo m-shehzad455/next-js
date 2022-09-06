@@ -1,15 +1,27 @@
 import { Fragment } from 'react'
+import Image from 'next/image'
 import { Disclosure, Menu, Transition } from '@headlessui/react'
 import { MagnifyingGlassIcon } from '@heroicons/react/20/solid'
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
 import {TbSettings} from "react-icons/tb"
-import {MdNotificationsNone} from "react-icons/md"
+import {MdNotificationsNone,MdLogout} from "react-icons/md"
 import {FiMessageSquare,FiPackage,FiUser} from "react-icons/fi"
-import {HiOutlineEnvelope,HiArrowDown} from "react-icons/hi"
+import {BiEnvelope} from "react-icons/bi"
+import {AiOutlineStar} from "react-icons/ai"
 import { US,NZ, AQ,AT,PK,IN,CH,IR,SR,EG } from 'country-flag-icons/react/3x2'
-import Image from 'next/image'
 import  {useState}  from 'react'
 import {Dialog} from '@headlessui/react'
+
+
+
+const notify = [
+  {id:1, heading: "5 new sales", para: "tque quaerat libero maiores vel."},
+  {id:2, heading: "$3.000 in average profits", para: "Aut aut ullam eum possimus."},
+  {id:3, heading: "200 new tweets", para: "Fugiat praesentium soluta amet non."},
+  {id:4, heading: "2 new items", para: "Fugit eaque molestias et aut."},
+  {id:5, heading: "51 registered users", para: "Labore aut voluptas molestias illo."}
+]
+
 
 function classNames(...classes:any) {
   return classes.filter(Boolean).join(' ')
@@ -232,37 +244,24 @@ function classNames(...classes:any) {
                     leaveFrom="transform opacity-100 scale-100"
                     leaveTo="transform opacity-0 scale-95"
                   >
-                    <Menu.Items className="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
+                    <Menu.Items className="absolute right-0 z-10 mt-2 w-72 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
                       <Menu.Item>
                         {({ active }) => (
                           <a
                             href="#"
-                            className={classNames(active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700')}
+                            className={classNames(active ? 'bg-gray-100' : '', 'block  px-3 py-3 text-sm text-gray-700 space-y-3')}
                           >
-                            Your Profile
+                              
+                                {notify.map((items) => 
+                                <div className='text-sm'>
+                                <h1 className='font-semibold font-900'>{items.heading}</h1>
+                                <p>{items.para}</p>
+                                </div>)}
+                             
                           </a>
                         )}
                       </Menu.Item>
-                      <Menu.Item>
-                        {({ active }) => (
-                          <a
-                            href="#"
-                            className={classNames(active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700')}
-                          >
-                            Settings
-                          </a>
-                        )}
-                      </Menu.Item>
-                      <Menu.Item>
-                        {({ active }) => (
-                          <a
-                            href="#"
-                            className={classNames(active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700')}
-                          >
-                            Sign out
-                          </a>
-                        )}
-                      </Menu.Item>
+                        
                     </Menu.Items>
                   </Transition>
                 </Menu>
@@ -275,7 +274,7 @@ function classNames(...classes:any) {
                         src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
                         alt=""
                       />
-                      <span className='h-4 w-4  flex text-center justify-center absolute text-white rounded-full bg-red-500  top-0 right-0'>2</span>
+                      <span className='h-4 w-4  flex text-center justify-center absolute text-white rounded-full bg-red-500  absolute right-0 z-16 origin-top-right '>2</span>
                         
                     </Menu.Button>
                   </div>
@@ -288,60 +287,55 @@ function classNames(...classes:any) {
                     leaveFrom="transform opacity-100 scale-100"
                     leaveTo="transform opacity-0 scale-95"
                   >
-                    <Menu.Items className=" absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
+                    <Menu.Items className=" absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white  shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none py-3 px-4 space-y-4 text-sm" >
                       <Menu.Item>
                         {({ active }) => (
                          <a href="#"
                          className={classNames(active ? 'bg-gray-100' : '', 'flex justify-between')}>
-                       <div className='flex justify-center text-center space-x-4'><FiPackage  className='h-6 w-6 '/>Inbox</div>
-                       <div className='h-6 w-6  flex text-center justify-center  text-white rounded-full bg-red-500 '>2</div>
-
-                       </a>
+                          <div className='flex justify-between items-center space-x-2'>
+                          <div className='flex items-center'><BiEnvelope className='h-6 w-6 '/></div>
+                          <div>Inbox</div>
+                          </div>
                        
-                        
-                         
+                          <div className='text-sm h-4 w-4 flex text-center justify-center  text-white rounded-full bg-red-500 '>2</div>
+
+                       </a> 
                         )}
                       </Menu.Item>
                       <Menu.Item>
-                        {({ active }) => (
+                      {({ active }) => (
                          <a href="#"
                          className={classNames(active ? 'bg-gray-100' : '', 'flex justify-between')}>
-                       <div className='flex justify-center text-center'><FiPackage />Inbox</div>
-                       <div className='h-6 w-6  flex text-center justify-center  text-white rounded-full bg-red-500 '>3</div>
-
-                       </a>
+                          <div className='flex justify-between items-center space-x-2'>
+                          <div className='flex items-center'><AiOutlineStar className='h-6 w-6 '/></div>
+                          <div>Messages</div>
+                          </div>
                        
-                          
-                        )}
-                      </Menu.Item>
-                      <Menu.Item>
-                        {({ active }) => (
-                          <a href="#"
-                          className={classNames(active ? 'bg-gray-100' : '', 'flex justify-between')}>
-                        <div className='flex justify-center text-center'><FiPackage />Inbox</div>
-                        
-                        </a>
+                          <div className='text-sm h-4 w-4 flex text-center justify-center  text-white rounded-full bg-blue-500 '>3</div>
 
-                          
+                       </a> 
                         )}
                       </Menu.Item>
                       <Menu.Item>
-                        
-                        {({ active }) => (
-                          
-                          // <a
-                          //   href="#"
-                          //   className={classNames(active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700 flex')}
-                          // >
-                          //   <FiPackage/>Inbox
-                          // </a>
-                          <a href="#"
-                            className={classNames(active ? 'bg-gray-100' : '', 'flex justify-between')}>
-                          <div className='flex justify-center text-center'><FiPackage />Inbox</div>
-                          
-                          </a>
-                          
-                          
+                      {({ active }) => (
+                         <a href="#"
+                         className={classNames(active ? 'bg-gray-100' : '', 'flex justify-between')}>
+                          <div className='flex justify-between items-center space-x-2'>
+                          <div className='flex items-center'><FiUser className='h-6 w-6 '/></div>
+                          <div>Profile</div>
+                          </div>
+                       </a> 
+                        )}
+                      </Menu.Item>
+                      <Menu.Item>
+                      {({ active }) => (
+                         <a href="#"
+                         className={classNames(active ? 'bg-gray-100' : '', 'flex justify-between')}>
+                          <div className='flex justify-between items-center space-x-2'>
+                          <div className='flex items-center'><MdLogout className='h-6 w-6 '/></div>
+                          <div>Logout</div>
+                          </div>
+                       </a> 
                         )}
                       </Menu.Item>
                       
