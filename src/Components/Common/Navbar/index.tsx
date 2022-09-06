@@ -39,7 +39,7 @@ function classNames(...classes:any) {
               <div className="flex flex-1 items-center justify-center px-2 lg:ml-6 lg:justify-between">
                 <div className="w-full max-w-lg lg:max-w-xs">
                   <label htmlFor="search" className="sr-only">
-                    Search
+                    Search...
                   </label>
                   <div className="relative">
                     <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
