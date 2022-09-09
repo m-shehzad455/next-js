@@ -12,7 +12,7 @@ import {
   MagnifyingGlassIcon,
   ChevronDownIcon,
 } from "@heroicons/react/20/solid";
-import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
+import { XMarkIcon } from "@heroicons/react/24/outline";
 import {
   TbSettings,
   TbBrandTwitter,
@@ -20,10 +20,17 @@ import {
   TbBrandInstagram,
 } from "react-icons/tb";
 import { MdNotificationsNone, MdLogout } from "react-icons/md";
-import { FiMessageSquare, FiPackage, FiUser, FiLinkedin } from "react-icons/fi";
+import {
+  FiMessageSquare,
+  FiPackage,
+  FiUser,
+  FiLinkedin,
+  FiMenu,
+} from "react-icons/fi";
 import { BiEnvelope, BiHomeAlt } from "react-icons/bi";
 import { AiOutlineStar } from "react-icons/ai";
 import { HiOutlineLocationMarker } from "react-icons/hi";
+
 import {
   PK,
   IR,
@@ -36,7 +43,7 @@ import {
   PL,
   TK,
 } from "country-flag-icons/react/3x2";
-import Progressbar from "../Progressbar/index";
+import Progressbar from "../Progress-bars/index";
 
 const notify = [
   { id: 1, heading: "5 new sales", para: "tque quaerat libero maiores vel." },
@@ -58,23 +65,26 @@ const notify = [
   },
 ];
 
-const progress = [
-  { id: 1, heading: "Mobile app development", para: "33%" },
+const progressBarData = [
+  { id: 1, heading: "Mobile app development", para: 33, color: "red" },
   {
     id: 2,
     heading: "Deploy github project",
-    para: "50%",
+    para: 50,
+    color: "blue",
   },
   {
     id: 3,
     heading: "Customer development",
-    para: "66%",
+    para: 66,
+    color: "green",
   },
-  { id: 4, heading: "Database backup", para: "25%" },
+  { id: 4, heading: "Database backup", para: 25, color: "yellow" },
   {
     id: 5,
     heading: "Release version 1.4",
-    para: "80%",
+    para: 80,
+    color: "brown",
   },
 ];
 
@@ -213,6 +223,7 @@ function classNames(...classes: any) {
 }
 
 const Navbar = () => {
+  const [showSidebar, setShowSidebar] = useState(false);
   const [open, setOpen] = useState(true);
   return (
     <Disclosure as="nav" className="bg-white shadow">
@@ -223,92 +234,91 @@ const Navbar = () => {
               <div className="flex flex-1 items-center justify-center px-2 lg:justify-between ">
                 <div className="w-full max-w-lg lg:max-w-xs flex">
                   <div className="toggle  lg:ml-10">
-                    <US  className="h-6 w-6 "/>
+                    <FiMenu className="h-6 w-6 " />
                   </div>
                   <div className="input">
-                  <label htmlFor="search" className="sr-only">
-                    Search...
-                  </label>
-                  <div className="relative">
-                    <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
-                      <MagnifyingGlassIcon
-                        className="h-5 w-5 text-gray-400"
-                        aria-hidden="true"
-                      />
-                    </div>
-                    <input
-                      id="search"
-                      name="search"
-                      className="focus:outline-none block w-2xl rounded-full border-none bg-gray-100 bg-white py-3 pl-10 pr-3 lg:text-sm"
-                      placeholder="Search"
-                      type="search"
-                    />
-                  </div>
-                  </div>
-
-              <div className="explore">
-                <Popover className="relative">
-                  {({ open }) => (
-                    <>
-                      <Popover.Button
-                        className={classNames(
-                          open ? "text-gray-900 " : "",
-                          " inline-flex items-center  bg-white text-base  focus:outline-none"
-                        )}
-                      >
-                        <span className="text-sm ">EXPLORE</span>
-                        <ChevronDownIcon
-                          className={classNames(
-                            open ? "text-gray-600" : "",
-                            "ml-2 h-5 w-5 transition duration-150 ease-in-out"
-                          )}
+                    <label htmlFor="search" className="sr-only">
+                      Search...
+                    </label>
+                    <div className="relative">
+                      <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
+                        <MagnifyingGlassIcon
+                          className="h-5 w-5 text-gray-400"
                           aria-hidden="true"
                         />
-                      </Popover.Button>
-                      <Transition
-                        as={Fragment}
-                        enter="transition ease-out duration-200"
-                        enterFrom="opacity-0 translate-y-1"
-                        enterTo="opacity-100 translate-y-0"
-                        leave="transition ease-in duration-150"
-                        leaveFrom="opacity-100 translate-y-0"
-                        leaveTo="opacity-0 translate-y-1"
-                      >
-                        <Popover.Panel className="absolute z-10 mt-3 w-screen max-w-md  sm:px-0 lg:max-w-xl">
-                          <div className="overflow-hidden rounded-lg shadow-lg ring-1 ring-black ring-opacity-5">
-                            <div className="relative grid gap-6 bg-white px-5 py-6 sm:gap-8 sm:p-8 lg:grid-cols-2">
-                              {solutions.map((item) => (
-                                <a
-                                  key={item.name}
-                                  href={item.href}
-                                  className="-m-6 flex items-start  p-3 transition duration-150 ease-in-out hover:bg-gray-50"
-                                >
-                                  <div className="h-8 w-8 flex flex-shrink-0 items-center justify-center rounded-full bg-indigo-500 text-white font-semibold text-xl">
-                                    {item.icon}
-                                  </div>
-                                  <div className="ml-4">
-                                    <p className="text-base text-sm text-gray-900">
-                                      {item.name}
-                                    </p>
-                                    <p className="text-xs text-gray-500">
-                                      {item.description}
-                                    </p>
-                                  </div>
-                                </a>
-                              ))}
-                            </div>
-                          </div>
-                        </Popover.Panel>
-                      </Transition>
-                    </>
-                  )}
-                </Popover>
-              </div>
-          </div>
+                      </div>
+                      <input
+                        id="search"
+                        name="search"
+                        className="focus:outline-none block w-2xl rounded-full border-none bg-gray-100 bg-white py-3 pl-10 pr-3 lg:text-sm"
+                        placeholder="Search"
+                        type="search"
+                      />
+                    </div>
+                  </div>
 
+                  <div className="explore">
+                    <Popover className="relative">
+                      {({ open }) => (
+                        <>
+                          <Popover.Button
+                            className={classNames(
+                              open ? "text-gray-900 " : "",
+                              " inline-flex items-center  bg-white text-base  focus:outline-none"
+                            )}
+                          >
+                            <span className="text-sm ">EXPLORE</span>
+                            <ChevronDownIcon
+                              className={classNames(
+                                open ? "text-gray-600 -rotate-90" : "",
+                                "ml-2 h-5 w-5 transition duration-150 ease-in-out"
+                              )}
+                              aria-hidden="true"
+                            />
+                          </Popover.Button>
+                          <Transition
+                            as={Fragment}
+                            enter="transition ease-out duration-200"
+                            enterFrom="opacity-0 translate-y-1"
+                            enterTo="opacity-100 translate-y-0"
+                            leave="transition ease-in duration-150"
+                            leaveFrom="opacity-100 translate-y-0"
+                            leaveTo="opacity-0 translate-y-1"
+                          >
+                            <Popover.Panel className="absolute z-10 mt-3 w-screen max-w-md  sm:px-0 lg:max-w-xl">
+                              <div className="overflow-hidden rounded-lg shadow-lg ring-1 ring-black ring-opacity-5">
+                                <div className="relative grid gap-6 bg-white px-5 py-6 sm:gap-8 sm:p-8 lg:grid-cols-2">
+                                  {solutions.map((item) => (
+                                    <a
+                                      key={item.name}
+                                      href={item.href}
+                                      className="-m-6 flex items-start  p-3 transition duration-150 ease-in-out hover:bg-gray-50"
+                                    >
+                                      <div className="h-8 w-8 flex flex-shrink-0 items-center justify-center rounded-full bg-indigo-500 text-white font-semibold text-xl">
+                                        {item.icon}
+                                      </div>
+                                      <div className="ml-4">
+                                        <p className="text-base text-sm text-gray-900">
+                                          {item.name}
+                                        </p>
+                                        <p className="text-xs text-gray-500">
+                                          {item.description}
+                                        </p>
+                                      </div>
+                                    </a>
+                                  ))}
+                                </div>
+                              </div>
+                            </Popover.Panel>
+                          </Transition>
+                        </>
+                      )}
+                    </Popover>
+                  </div>
+                </div>
               </div>
 
-              <div className="hidden lg:flex lg:items-center">
+              <div className="hidden lg:flex lg:items-center space-between space-x-4">
                 {/* Profile dropdown */}
 
                 <Menu as="div" className="relative  flex-shrink-0">
@@ -362,7 +372,7 @@ const Navbar = () => {
                   </Transition>
                 </Menu>
 
-                <Menu as="div" className="relative ml-4 flex-shrink-0">
+                <Menu as="div" className="relative flex-shrink-0">
                   <div>
                     <Menu.Button className="flex rounded-full bg-white text-sm ">
                       <span className="sr-only">Open user menu</span>
@@ -408,7 +418,7 @@ const Navbar = () => {
                     </Menu.Items>
                   </Transition>
                 </Menu>
-                <Menu as="div" className="relative ml-4 flex-shrink-0">
+                <Menu as="div" className="relative  flex-shrink-0">
                   <div>
                     <Menu.Button className="flex rounded-full bg-white text-sm ">
                       <span className="sr-only">Open user menu</span>
@@ -441,19 +451,8 @@ const Navbar = () => {
                             <h1 className="border-b-2 text-sm pb-2">
                               PROJECT STATUS
                             </h1>
-                            {progress.map((items) => (
-                              <div className="text-sm flex justify-between">
-                                <div>
-                                  <h1 className="font-semibold font-900 pb-2">
-                                    {items.heading}
-                                  </h1>
-                                  <span className="w-3 ">
-                                    <Progressbar />
-                                  </span>
-                                </div>
-
-                                <p>{items.para}</p>
-                              </div>
+                            {progressBarData.map((item) => (
+                              <Progressbar id={item.id} heading={item.heading} para={item.para} color={item.color} />
                             ))}
                           </a>
                         )}
@@ -504,7 +503,7 @@ const Navbar = () => {
                     </Menu.Items>
                   </Transition>
                 </Menu>
-                <Menu as="div" className="relative ml-4 flex-shrink-0">
+                <Menu as="div" className="relative  flex-shrink-0">
                   <div>
                     <Menu.Button className=" relative flex rounded-full bg-white text-sm  focus:ring-indigo-500 focus:ring-offset-2">
                       <img
@@ -613,62 +612,54 @@ const Navbar = () => {
                 </Menu>
                 <Menu as="div" className="relative  flex-shrink-0">
                   <div>
-                    <Menu.Button className="flex rounded-full bg-white text-sm ">
-                      <span className="sr-only">Open user menu</span>
-                      <TbSettings className="h-6 w-6" />
-                    </Menu.Button>
+                    {showSidebar ? (
+                      <button
+                        className=" flex text-xl text-white items-center cursor-pointer fixed right-6 top-4 z-50"
+                        onClick={() => setShowSidebar(!showSidebar)}
+                      >
+                        <div className="flex items-center justify-between w-48 ">
+                          <div className="text-sm font-semibold">SETTINGS</div>
+                          <div>x</div>
+                        </div>
+                      </button>
+                    ) : (
+                      <TbSettings
+                        onClick={() => setShowSidebar(!showSidebar)}
+                        className="fixed  z-30 flex items-center cursor-pointer  top-5 h-6 w-6"
+                      />
+                    )}
+
+                    <div
+                      className={`border-l-2 border-gray-100 top-0 right-0 w-[19vw] bg-white-500  text-white fixed h-full z-40  ease-in-out duration-300 ${
+                        showSidebar ? "translate-x-0 " : "translate-x-full"
+                      }`}
+                    >
+                      <div className="w-full h-16 bg-blue-500"></div>
+                      <div className="px-8">
+                        <div className=" py-6">
+                          <h2 className="font-bold py-2 text-gray-900">
+                            DEMOS
+                          </h2>
+                          <p className="py-2 text-gray-700">Light background</p>
+                          <p className="py-2 text-gray-700">Dark background</p>
+                          <p className="py-2 text-gray-700">Small sidebar</p>
+                        </div>
+                        <div>
+                          <h2 className="font-bold py-2 text-gray-900">
+                            TOGGLE SIDEBAR
+                          </h2>
+                          <div></div>
+                        </div>
+                        <div>
+                          <h2 className="font-bold py-2 text-gray-900">
+                            COLORS
+                          </h2>
+                          <p className=" py-2 text-gray-500">BACKGROUND</p>
+                          <div></div>
+                        </div>
+                      </div>
+                    </div>
                   </div>
-                  <Transition
-                    as={Fragment}
-                    enter="transition ease-out duration-100"
-                    enterFrom="transform opacity-0 scale-95"
-                    enterTo="transform opacity-100 scale-100"
-                    leave="transition ease-in duration-75"
-                    leaveFrom="transform opacity-100 scale-100"
-                    leaveTo="transform opacity-0 scale-95"
-                  >
-                    <Menu.Items className="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
-                      <Menu.Item>
-                        {({ active }) => (
-                          <a
-                            href="#"
-                            className={classNames(
-                              active ? "bg-gray-100" : "",
-                              "block px-4 py-2 text-sm text-gray-700"
-                            )}
-                          >
-                            Your Profile
-                          </a>
-                        )}
-                      </Menu.Item>
-                      <Menu.Item>
-                        {({ active }) => (
-                          <a
-                            href="#"
-                            className={classNames(
-                              active ? "bg-gray-100" : "",
-                              "block px-4 py-2 text-sm text-gray-700"
-                            )}
-                          >
-                            Settings
-                          </a>
-                        )}
-                      </Menu.Item>
-                      <Menu.Item>
-                        {({ active }) => (
-                          <a
-                            href="#"
-                            className={classNames(
-                              active ? "bg-gray-100" : "",
-                              "block px-4 py-2 text-sm text-gray-700"
-                            )}
-                          >
-                            Sign out
-                          </a>
-                        )}
-                      </Menu.Item>
-                    </Menu.Items>
-                  </Transition>
                 </Menu>
               </div>
             </div>
