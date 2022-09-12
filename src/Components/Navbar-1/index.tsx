@@ -1,6 +1,5 @@
-import { Fragment } from "react";
-import { useState } from "react";
-import Image from "next/image";
+import { Fragment,useState } from "react";
+import {US,} from "country-flag-icons/react/3x2";
 import {
   Disclosure,
   Menu,
@@ -13,12 +12,6 @@ import {
   ChevronDownIcon,
 } from "@heroicons/react/20/solid";
 import { XMarkIcon } from "@heroicons/react/24/outline";
-import {
-  TbSettings,
-  TbBrandTwitter,
-  TbBrandFacebook,
-  TbBrandInstagram,
-} from "react-icons/tb";
 import { MdNotificationsNone, MdLogout } from "react-icons/md";
 import {
   FiMessageSquare,
@@ -27,214 +20,38 @@ import {
   FiLinkedin,
   FiMenu,
 } from "react-icons/fi";
-import { BiEnvelope, BiHomeAlt } from "react-icons/bi";
+import  RightSidesetting from "../Right-Sidesetting"
+import { BiEnvelope} from "react-icons/bi";
 import { AiOutlineStar } from "react-icons/ai";
-import { HiOutlineLocationMarker } from "react-icons/hi";
-
-import {
-  PK,
-  IR,
-  IN,
-  CH,
-  BD,
-  US,
-  AF,
-  SR,
-  PL,
-  TK,
-} from "country-flag-icons/react/3x2";
-import Progressbar from "../Progress-bars/index";
-
-const notify = [
-  { id: 1, heading: "5 new sales", para: "tque quaerat libero maiores vel." },
-  {
-    id: 2,
-    heading: "$3.000 in average profits",
-    para: "Aut aut ullam eum possimus.",
-  },
-  {
-    id: 3,
-    heading: "200 new tweets",
-    para: "Fugiat praesentium soluta amet non.",
-  },
-  { id: 4, heading: "2 new items", para: "Fugit eaque molestias et aut." },
-  {
-    id: 5,
-    heading: "51 registered users",
-    para: "Labore aut voluptas molestias illo.",
-  },
-];
-
-const progressBarData = [
-  { id: 1, heading: "Mobile app development", para: 33, color: "red" },
-  {
-    id: 2,
-    heading: "Deploy github project",
-    para: 50,
-    color: "blue",
-  },
-  {
-    id: 3,
-    heading: "Customer development",
-    para: 66,
-    color: "green",
-  },
-  { id: 4, heading: "Database backup", para: 25, color: "yellow" },
-  {
-    id: 5,
-    heading: "Release version 1.4",
-    para: 80,
-    color: "brown",
-  },
-];
-
-const apps = [
-  {
-    id: 0,
-    avatarIcon: <BiHomeAlt />,
-    text: "Home",
-  },
-  {
-    id: 1,
-    avatarIcon: <FiUser />,
-    text: "Account",
-  },
-  {
-    id: 2,
-    avatarIcon: <FiMessageSquare />,
-    text: "Comments",
-  },
-  {
-    id: 3,
-    text: "Settings",
-    avatarIcon: <TbSettings />,
-  },
-  {
-    id: 4,
-    text: "Maps",
-    avatarIcon: <HiOutlineLocationMarker />,
-  },
-  {
-    id: 5,
-    text: "Twitter",
-    avatarIcon: <TbBrandTwitter className="text-sky-500" />,
-  },
-  {
-    id: 6,
-    text: "Facebook",
-    avatarIcon: <TbBrandFacebook className="text-sky-600" />,
-  },
-  {
-    id: 7,
-    text: "Instagram",
-    avatarIcon: <TbBrandInstagram className="text-sky-600" />,
-  },
-  {
-    id: 8,
-    text: "Linkedin",
-    avatarIcon: <FiLinkedin className="text-sky-600" />,
-  },
-];
-
-const countries = [
-  {
-    id: 0,
-    avatarIcon: <PK className="h-6 w-6" />,
-    text: "Pakistan",
-  },
-  {
-    id: 1,
-    avatarIcon: <IR className="h-6 w-6" />,
-    text: "Iran",
-  },
-  {
-    id: 2,
-    avatarIcon: <CH className="h-6 w-6" />,
-    text: "China",
-  },
-  {
-    id: 3,
-    avatarIcon: <IN className="h-6 w-6" />,
-    text: "India",
-  },
-  {
-    id: 4,
-    avatarIcon: <BD className="h-6 w-6" />,
-    text: "Bangaladesh",
-  },
-  {
-    id: 5,
-    avatarIcon: <US className="h-6 w-6" />,
-    text: "USA",
-  },
-  {
-    id: 6,
-    avatarIcon: <AF className="h-6 w-6" />,
-    text: "Afghanistan",
-  },
-  {
-    id: 7,
-    avatarIcon: <SR className="h-6 w-6" />,
-    text: "Srilanaka",
-  },
-  {
-    id: 8,
-    avatarIcon: <PL className="h-6 w-6" />,
-    text: "Plastine",
-  },
-  {
-    id: 9,
-    avatarIcon: <TK className="h-6 w-6" />,
-    text: "Turkey",
-  },
-];
-
-const solutions = [
-  { name: "Teams", description: "Minima quasi sunt.", href: "#", icon: "01" },
-  { name: "Blog", description: "Possimus non dolor.", href: "#", icon: "02" },
-  {
-    name: "Meetups",
-    description: "Cupiditate aliquid magnam.",
-    href: "#",
-    icon: "03",
-  },
-  {
-    name: "Advertise with us",
-    description: "Doloribus modi cum.",
-    href: "#",
-    icon: "04",
-  },
-  {
-    name: "Features",
-    description: "Voluptatum suscipit minima.",
-    href: "#",
-    icon: "05",
-  },
-  {
-    name: "Job board",
-    description: "Magnam quae quia.",
-    href: "#",
-    icon: "06",
-  },
-];
+import  Progressbar from "../Progress-bars/index";
+import { notify } from "../../Store/data";
+import { progressBarData } from "../../Store/data";
+import { apps } from "../../Store/data";
+import { countries } from "../../Store/data";
+import { solutions } from "../../Store/data";
+import { TbSettings } from "react-icons/tb";
+import { useAppContext } from "../../context/state";
 
 function classNames(...classes: any) {
   return classes.filter(Boolean).join(" ");
 }
 
 const Navbar = () => {
-  const [showSidebar, setShowSidebar] = useState(false);
   const [open, setOpen] = useState(true);
+const  {setShowSidebar, showSidebar} = useAppContext()
   return (
+    <>
+     {showSidebar && <RightSidesetting setIsOpen={setShowSidebar}  isOpen={showSidebar}/>}
     <Disclosure as="nav" className="bg-white shadow">
+      
       {({ open }) => (
         <>
-          <div className="mx-auto max-w-7xl px-2 sm:px-4 lg:px-6">
+          <div className="mx-auto max-w-7xl px-2 sm:px-4 ">
             <div className="flex h-16 justify-between">
               <div className="flex flex-1 items-center justify-center px-2 lg:justify-between ">
-                <div className="w-full max-w-lg lg:max-w-xs flex">
-                  <div className="toggle  lg:ml-10">
-                    <FiMenu className="h-6 w-6 " />
+                <div className="w-full max-w-lg lg:max-w-xs flex items-center">
+                  <div className="toggle  lg:ml-10 mr-4">
+                    <FiMenu className="h-6 w-6" />
                   </div>
                   <div className="input">
                     <label htmlFor="search" className="sr-only">
@@ -250,15 +67,15 @@ const Navbar = () => {
                       <input
                         id="search"
                         name="search"
-                        className="focus:outline-none block w-2xl rounded-full border-none bg-gray-100 bg-white py-3 pl-10 pr-3 lg:text-sm"
+                        className="focus:outline-none block w-80 rounded-full border-none bg-gray-100 bg-white py-3 pl-10 pr-3 lg:text-sm"
                         placeholder="Search"
                         type="search"
                       />
                     </div>
                   </div>
 
-                  <div className="explore">
-                    <Popover className="relative">
+                  <div className="explore ">
+                    <Popover className="relative ml-4">
                       {({ open }) => (
                         <>
                           <Popover.Button
@@ -372,7 +189,7 @@ const Navbar = () => {
                   </Transition>
                 </Menu>
 
-                <Menu as="div" className="relative flex-shrink-0">
+                <Menu as="div" className="relative  flex-shrink-0">
                   <div>
                     <Menu.Button className="flex rounded-full bg-white text-sm ">
                       <span className="sr-only">Open user menu</span>
@@ -418,7 +235,7 @@ const Navbar = () => {
                     </Menu.Items>
                   </Transition>
                 </Menu>
-                <Menu as="div" className="relative  flex-shrink-0">
+                <Menu as="div" className="relative flex-shrink-0">
                   <div>
                     <Menu.Button className="flex rounded-full bg-white text-sm ">
                       <span className="sr-only">Open user menu</span>
@@ -610,57 +427,19 @@ const Navbar = () => {
                     </Menu.Items>
                   </Transition>
                 </Menu>
-                <Menu as="div" className="relative  flex-shrink-0">
-                  <div>
-                    {showSidebar ? (
-                      <button
-                        className=" flex text-xl text-white items-center cursor-pointer fixed right-6 top-4 z-50"
-                        onClick={() => setShowSidebar(!showSidebar)}
-                      >
-                        <div className="flex items-center justify-between w-48 ">
-                          <div className="text-sm font-semibold">SETTINGS</div>
-                          <div>x</div>
-                        </div>
-                      </button>
-                    ) : (
-                      <TbSettings
-                        onClick={() => setShowSidebar(!showSidebar)}
+                
+                  <Menu>
+                    <div>
+                    <TbSettings onClick={() => setShowSidebar(true)}
                         className="fixed  z-30 flex items-center cursor-pointer  top-5 h-6 w-6"
-                      />
-                    )}
-
-                    <div
-                      className={`border-l-2 border-gray-100 top-0 right-0 w-[19vw] bg-white-500  text-white fixed h-full z-40  ease-in-out duration-300 ${
-                        showSidebar ? "translate-x-0 " : "translate-x-full"
-                      }`}
-                    >
-                      <div className="w-full h-16 bg-blue-500"></div>
-                      <div className="px-8">
-                        <div className=" py-6">
-                          <h2 className="font-bold py-2 text-gray-900">
-                            DEMOS
-                          </h2>
-                          <p className="py-2 text-gray-700">Light background</p>
-                          <p className="py-2 text-gray-700">Dark background</p>
-                          <p className="py-2 text-gray-700">Small sidebar</p>
-                        </div>
-                        <div>
-                          <h2 className="font-bold py-2 text-gray-900">
-                            TOGGLE SIDEBAR
-                          </h2>
-                          <div></div>
-                        </div>
-                        <div>
-                          <h2 className="font-bold py-2 text-gray-900">
-                            COLORS
-                          </h2>
-                          <p className=" py-2 text-gray-500">BACKGROUND</p>
-                          <div></div>
-                        </div>
-                      </div>
+                        />
                     </div>
-                  </div>
-                </Menu>
+                  
+                  </Menu>
+                     
+                        
+                <div>
+                </div>
               </div>
             </div>
           </div>
@@ -803,6 +582,7 @@ const Navbar = () => {
         </>
       )}
     </Disclosure>
+      </>
   );
 };
 
