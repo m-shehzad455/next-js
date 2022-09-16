@@ -162,7 +162,7 @@ const  {setShowSidebar, showSidebar} = useAppContext()
                             href="#"
                             className={classNames(
                               active ? "bg-gray-100" : "",
-                              "block  px-3  text-sm text-gray-700 space-y-3 "
+                              "block  px-3  text-sm text-gray-700 space-y-3"
                             )}
                           >
                             {" "}
@@ -171,7 +171,7 @@ const  {setShowSidebar, showSidebar} = useAppContext()
                             </h1>
                             <div className="flex flex-wrap justify-between ">
                               {countries.map((items) => (
-                                <div className="flex text-sm  w-[35%] py-3">
+                                <div className="flex text-sm space-x-3 w-[38%] py-3">
                                   <div>
                                     <h1>{items.avatarIcon}</h1>
                                   </div>
@@ -360,7 +360,7 @@ const  {setShowSidebar, showSidebar} = useAppContext()
                               <div>Inbox</div>
                             </div>
 
-                            <div className="text-sm h-4 w-4 flex text-center justify-center  text-white rounded-full bg-red-500 ">
+                            <div className="text-sm h-4 w-4 flex items-center justify-center  text-white rounded-full bg-red-500 ">
                               2
                             </div>
                           </a>
@@ -382,7 +382,7 @@ const  {setShowSidebar, showSidebar} = useAppContext()
                               <div>Messages</div>
                             </div>
 
-                            <div className="text-sm h-4 w-4 flex text-center justify-center  text-white rounded-full bg-blue-500 ">
+                            <div className="text-sm h-4 w-4 flex items-center justify-center  text-white rounded-full bg-blue-500 ">
                               3
                             </div>
                           </a>

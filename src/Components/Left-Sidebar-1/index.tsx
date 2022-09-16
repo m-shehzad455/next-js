@@ -134,8 +134,9 @@
 
 const LeftSidebar  = () => {
        return(
-        <div>
+        <div className="fixed w-32">
             <h1>Hello World</h1>
+          
         </div>
        )
 }
