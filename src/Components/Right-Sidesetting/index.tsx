@@ -1,5 +1,6 @@
 import React, { FC, useState } from "react";
 import { Menu } from "@headlessui/react";
+import ThemeToggler from '../Theme/';
 import { TbSettings } from "react-icons/tb";
 import { useAppContext } from "../../context/state";
 interface IProps {
@@ -45,8 +46,9 @@ const RightSidesetting: FC<IProps> = ({ setIsOpen, isOpen }) => {
                   id="default-toggle"
                   className="sr-only peer"
                 />
-                <div className="w-11 h-6 bg-gray-200 peer-focus:outline-none  rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 "></div>
+                <div className="w-11 h-6 bg-gray-200 peer-focus:outline-none  rounded-full peer  peer-checked:after:translate-x-full peer-checked:after:bg-blue-600 after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white  after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-blue-300"></div>
                 <span className="ml-3 text-sm font-medium text-gray-900 dark:text-gray-300">
+                  
                 </span>
               </label>
 
@@ -55,7 +57,9 @@ const RightSidesetting: FC<IProps> = ({ setIsOpen, isOpen }) => {
             <div>
               <h2 className="font-bold py-2 text-gray-900">COLORS</h2>
               <p className=" py-2 text-gray-500">BACKGROUND</p>
-              <div></div>
+              <div>
+                <ThemeToggler />
+              </div>
             </div>
           </div>
         </div>
