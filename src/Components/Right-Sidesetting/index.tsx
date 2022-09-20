@@ -33,8 +33,8 @@ const RightSidesetting: FC<IProps> = ({ setIsOpen, isOpen }) => {
             <div className=" py-6">
               <h2 className="font-bold py-2 text-gray-900">DEMOS</h2>
               <button className="py-2 text-gray-700">Light background</button>
-              {/* <button className="py-2 text-gray-700">Dark background</button> */}
-              <ThemeToggler />
+             
+             
               <button className="py-2 text-gray-700">Small sidebar</button>
             </div>
             <div>
@@ -58,6 +58,7 @@ const RightSidesetting: FC<IProps> = ({ setIsOpen, isOpen }) => {
             <div>
               <h2 className="font-bold py-2 text-gray-900">COLORS</h2>
               <p className=" py-2 text-gray-500">BACKGROUND</p>
+              <ThemeToggler />
               <div>
                 
               </div>

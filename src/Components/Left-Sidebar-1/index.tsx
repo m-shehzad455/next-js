@@ -135,7 +135,7 @@
 const LeftSidebar  = () => {
        return(
         <div className="fixed w-32">
-            <h1>Hello World</h1>
+            {/* <h1>Hello World</h1> */}
           
         </div>
        )
