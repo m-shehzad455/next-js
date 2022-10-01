@@ -14,11 +14,11 @@ const ThemeToggler = () => {
       aria-label="Toggle Dark Mode"
     >
       {theme === 'light' ? (
-        <TbSettings className="text-blue-500 w-5 h-5" />
-        //  <button className=" text-gray-700">Dark background</button>
+        // <TbSettings className="text-blue-500 w-5 h-5" />
+         <button className=" text-gray-700">Dark background</button>
       ) : (
-        <TbSettings className="text-blue-400 w-5 h-5" />
-          // <button className=" text-gray-700">Light background</button>
+        // <TbSettings className="text-blue-400 w-5 h-5" />
+          <button className=" text-gray-700">Light background</button>
       )}
     </button>
   );
